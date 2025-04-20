@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+    <link rel="stylesheet" href="css/reset-do-meu-layout.css">
+    <!--<link rel="stylesheet" href="../css/all.css" media="all">-->
+    <link rel="stylesheet" href="css/mobile-device.css">
+</head>
+<body>
+    <header class="header-site">
+        <img src="">Logo-Site</img>
+        <nav id="area-menu" class="area-menu">
+            <ul class="menu">
+                <li><a href="#" id="btn-fechar" onclick="clicarFechar()">X</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Cultura</a></li>
+                <li><a href="#">Pontos Turisticos</a></li>
+                <li><a href="#">Lazer</a></li>
+                <li><a href="#">Eventos</a></li>
+            </ul>
+        </nav>
+        <span id="btn-menu"class="material-symbols-outlined" onclick="clicarAbrir()">menu</span>
+    </header>
+    <section id="div-slide">
+        <div id="area-botao-slide">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+    <section id="cultura">
+        <h1>Cultura</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum </p>
+    </section>
+    <section id="pontos-turisticos">
+        <h1>Turismo</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum </p>
+    </section>
+    <section id="lazer">
+        <h1>Lazer</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum </p>
+    </section>
+    <section id="eventos">
+        <h1>Eventos</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum </p>
+    </section>
+    <footer>
+        <p>Todos direitos reservados.</p>
+    </footer>
+</body>
+<script>
+    var areaMenu;
+   var fotos=[];
+    var qtdFoto;
+    var ifoto;
+    var complementaNomeFoto=1;
+    var area_eslide;
+    var temp;
+  
+    function preCarregamento(){
+       
+        for(var i=0; i<3;i++){
+
+            fotos[i]=new Image();
+            fotos[i].src="./foto_projeto0"+complementaNomeFoto+".jpg";
+
+            complementaNomeFoto++;
+        }
+    }
+    function carregaImagensNoSlide(ifoto){
+        area_eslide.style.backgroundImage="url('"+fotos[ifoto].src+"')";
+    }
+    function trocaImagensNoSlider(){
+        ifoto++;
+        if(ifoto > qtdFoto){
+            ifoto=0;
+        }
+        carregaImagensNoSlide(ifoto);
+    }
+    function iniciaTudo(){
+        preCarregamento();
+        ifoto=0;
+        qtdFoto=fotos.length-1;
+        area_eslide=document.getElementById("div-slide");
+        carregaImagensNoSlide(ifoto);
+    temp=setInterval(trocaImagensNoSlider,5000);
+    }
+    function clicarFechar(){
+        
+        areaMenu = window.document.getElementById('area-menu');
+       
+       areaMenu.style.display='none';
+
+   }
+   function clicarAbrir(){
+       
+       areaMenu = window.document.getElementById('area-menu');
+      
+      areaMenu.style.display='block';
+
+  }
+    window.addEventListener("load",iniciaTudo);
+</script>
+</html>
